@@ -184,17 +184,24 @@
     }
     .hero-cta:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.8); }
     .scroll-hint {
-      position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
       z-index: 2; display: flex; flex-direction: column; align-items: center;
-      gap: 8px; color: rgba(255,255,255,.45);
-      font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase;
+      gap: 12px; color: rgba(255,255,255,.72);
+      font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase;
     }
+    .scroll-arrows { display: flex; flex-direction: column; align-items: center; gap: 4px; }
     .scroll-arrow {
-      width: 1px; height: 36px;
-      background: linear-gradient(to bottom, rgba(255,255,255,.4), transparent);
-      animation: pulse 2s ease-in-out infinite;
+      width: 13px; height: 13px;
+      border-right: 1.5px solid rgba(255,255,255,.75);
+      border-bottom: 1.5px solid rgba(255,255,255,.75);
+      transform: rotate(45deg);
+      animation: bounce-down 2s ease-in-out infinite;
     }
-    @keyframes pulse { 0%,100% { opacity:.35; } 50% { opacity:.85; } }
+    .scroll-arrow:nth-child(2) { animation-delay: 0.18s; opacity: 0.45; }
+    @keyframes bounce-down {
+      0%, 20%, 100% { transform: rotate(45deg) translateY(0); }
+      60% { transform: rotate(45deg) translateY(6px); }
+    }
 
     /* FOTO ELEMENTS */
     .photo-break { width: 100%; overflow: hidden; line-height: 0; }
@@ -663,7 +670,10 @@
   </div>
   <div class="scroll-hint" aria-hidden="true">
     <span data-i18n="hero_scroll">Entdecken</span>
-    <div class="scroll-arrow"></div>
+    <div class="scroll-arrows">
+      <div class="scroll-arrow"></div>
+      <div class="scroll-arrow"></div>
+    </div>
   </div>
 </section>
 
@@ -746,7 +756,7 @@
 <!-- FOTO DUO -->
 <div class="photo-duo">
   <img src="DSC00383.jpg" alt="Valeria und Denis">
-  <img src="DSC00388.jpg" alt="Valeria und Denis">
+  <img src="DSC00388-2.jpg" alt="Valeria und Denis">
 </div>
 
 
@@ -764,8 +774,8 @@
       </div>
       <div class="info-card">
         <p class="info-card-eyebrow" data-i18n="info2_eyebrow">Für die Kleinen</p>
-        <h3 class="info-title" data-i18n="info2_title">Kinderanimation</h3>
-        <p class="info-text" data-i18n="info2_text">Für die kleinen Gäste ist bestens gesorgt. Es gibt eine professionelle Kinderanimation, damit auch die Jüngsten einen unvergesslichen Abend erleben.</p>
+        <h3 class="info-title" data-i18n="info2_title">Kinder willkommen</h3>
+        <p class="info-text" data-i18n="info2_text">Auch für die kleinen Gäste ist gesorgt. Wir stellen sicher, dass die Kinder einen schönen Abend haben und gut unterhalten sind.</p>
         <span class="info-tag" data-i18n="info2_tag">Kinder herzlich willkommen</span>
       </div>
       <div class="info-card">
@@ -792,7 +802,7 @@
   <div class="container">
     <p class="section-eyebrow" data-i18n="rsvp_eyebrow">RSVP</p>
     <h2 class="section-title" data-i18n="rsvp_title">Anmeldung</h2>
-    <p class="section-sub" data-i18n="rsvp_sub">Damit wir alles perfekt für euch planen können, bitten wir um Anmeldung bis Ende Januar 2027.</p>
+    <p class="section-sub" data-i18n="rsvp_sub">Damit wir alles perfekt für euch planen können, bitten wir um eure Anmeldung bis Ende Januar 2027.</p>
 
     <div class="form-wrap">
       <div class="deadline-bar">
@@ -1007,7 +1017,7 @@
       hero_eyebrow:'Wir heiraten', hero_date:'26 · Juni · 2027', hero_location:'Alicante, Spanien',
       cd_days:'Tage', cd_hours:'Stunden', cd_min:'Minuten', cd_sec:'Sekunden',
       hero_cta:'Jetzt anmelden', hero_scroll:'Entdecken',
-      tag_eyebrow:'26. Juni 2027', tag_title:'Der Tag',
+      tag_eyebrow:'26. Juni 2027', tag_title:'Wenn Liebe Ja sagt',
       basilica_eyebrow:'Trauung · 18:30 Uhr',
       basilica_address:'Plaza de Santa María, s/n<br>03001 Alicante, Spanien',
       maps_open:'In Google Maps öffnen', flip_more:'Mehr', flip_back:'← Zurück',
@@ -1021,14 +1031,14 @@
       info1_eyebrow:'Unterkunft', info1_title:'Jetzt buchen',
       info1_text:'Die Hogueras de San Juan findet im Juni statt. Dieses spektakuläre Stadtfest zieht tausende Besucher an. Hotels sind bereits Monate im Voraus ausgebucht. Am besten jetzt sofort Flug &amp; Hotel buchen.',
       info1_tag:'Dringend empfohlen',
-      info2_eyebrow:'Für die Kleinen', info2_title:'Kinderanimation',
-      info2_text:'Für die kleinen Gäste ist bestens gesorgt. Es gibt eine professionelle Kinderanimation, damit auch die Jüngsten einen unvergesslichen Abend erleben.',
+      info2_eyebrow:'Für die Kleinen', info2_title:'Kinder willkommen',
+      info2_text:'Auch für die kleinen Gäste ist gesorgt. Wir stellen sicher, dass die Kinder einen schönen Abend haben und gut unterhalten sind.',
       info2_tag:'Kinder herzlich willkommen',
       info3_eyebrow:'Klima', info3_title:'Spanischer Sommer',
       info3_text:'Alicante im Juni ist warm, sonnig und traumhaft. Denkt an Sonnenschutz, luftige Kleidung für den Tag und bequeme Schuhe für die Nacht.',
       info3_tag:'Mittelmeerklima',
       rsvp_eyebrow:'RSVP', rsvp_title:'Anmeldung',
-      rsvp_sub:'Damit wir alles perfekt für euch planen können, bitten wir um Anmeldung bis Ende Januar 2027.',
+      rsvp_sub:'Damit wir alles perfekt für euch planen können, bitten wir um eure Anmeldung bis Ende Januar 2027.',
       rsvp_deadline_intro:'Anmeldefrist:', rsvp_deadline_date:'Ende Januar 2027',
       rsvp_deadline_text:'Bitte pro Person Vorname, Nachname, Menüwahl und allfällige Allergien angeben.',
       rsvp_children_note:'Kinder bitte ebenfalls einzeln anmelden.',
@@ -1066,7 +1076,7 @@
       hero_eyebrow:'Nos casamos', hero_date:'26 · Junio · 2027', hero_location:'Alicante, España',
       cd_days:'Días', cd_hours:'Horas', cd_min:'Minutos', cd_sec:'Segundos',
       hero_cta:'Confirmar asistencia', hero_scroll:'Descubrir',
-      tag_eyebrow:'26 de junio de 2027', tag_title:'El Día',
+      tag_eyebrow:'26 de junio de 2027', tag_title:'Cuando el Amor dice Sí',
       basilica_eyebrow:'Ceremonia · 18:30 h',
       basilica_address:'Plaza de Santa María, s/n<br>03001 Alicante, España',
       maps_open:'Abrir en Google Maps', flip_more:'Más', flip_back:'← Volver',
@@ -1080,8 +1090,8 @@
       info1_eyebrow:'Alojamiento', info1_title:'Reservad ahora',
       info1_text:'Las Hogueras de San Juan tienen lugar en junio. Este espectacular festival atrae a miles de visitantes. Los hoteles se agotan meses antes. Es mejor reservar vuelo y hotel cuanto antes.',
       info1_tag:'Muy recomendado',
-      info2_eyebrow:'Para los pequeños', info2_title:'Animación infantil',
-      info2_text:'Los más pequeños también estarán en buenas manos. Habrá animación infantil profesional para que los niños vivan una velada inolvidable.',
+      info2_eyebrow:'Para los pequeños', info2_title:'Niños bienvenidos',
+      info2_text:'Los más pequeños también están en buenas manos. Nos aseguraremos de que los niños estén entretenidos y disfruten de la velada.',
       info2_tag:'Niños bienvenidos',
       info3_eyebrow:'Clima', info3_title:'Verano español',
       info3_text:'Alicante en junio es cálido, soleado y maravilloso. Recordad llevar protector solar, ropa ligera para el día y zapatos cómodos para la noche.',
