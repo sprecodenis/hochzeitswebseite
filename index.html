@@ -70,6 +70,18 @@
     .menu-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     .menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
 
+    /* MUSIK BUTTON */
+    .music-btn {
+      background: none; border: none; cursor: pointer; padding: 6px;
+      color: var(--dark); opacity: 0.45; transition: opacity 0.2s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .music-btn:hover { opacity: 0.85; }
+    .music-btn svg { width: 18px; height: 18px; }
+    .music-btn .icon-pause { display: none; }
+    .music-btn.playing .icon-play { display: none; }
+    .music-btn.playing .icon-pause { display: block; }
+
     /* FULLSCREEN OVERLAY MENU */
     #nav-overlay {
       position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 490;
@@ -614,11 +626,19 @@
   </div>
 </div>
 
+<audio id="bg-music" src="music.mp3" loop preload="auto"></audio>
+
 <nav id="nav">
   <a href="#hero" class="nav-logo">Valeria &amp; Denis</a>
-  <button class="menu-toggle" id="menu-btn" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </button>
+  <div style="display:flex;align-items:center;gap:4px;">
+    <button class="music-btn" id="music-btn" onclick="toggleMusic()" aria-label="Musik">
+      <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+    <button class="menu-toggle" id="menu-btn" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <!-- OVERLAY MENÜ -->
@@ -630,7 +650,6 @@
       <li><a href="#anmeldung" onclick="closeMenu()" data-i18n="nav_rsvp">Anmeldung</a></li>
       <li><a href="#hotel"     onclick="closeMenu()" data-i18n="nav_hotel">Hotel</a></li>
       <li><a href="#wunsch"    onclick="closeMenu()" data-i18n="nav_honeymoon">Flitterwochen</a></li>
-      <li><a href="#fotos"     onclick="closeMenu()" data-i18n="nav_fotos">Fotos</a></li>
     </ul>
     <div class="no-divider"></div>
     <div class="no-lang">
@@ -682,7 +701,7 @@
 <section id="tag" class="section">
   <div class="container">
     <p class="section-eyebrow" data-i18n="tag_eyebrow">26. Juni 2027</p>
-    <h2 class="section-title" data-i18n="tag_title">Der Tag</h2>
+    <h2 class="section-title" data-i18n="tag_title">Heute. Morgen. Für immer.</h2>
 
     <div class="ceremony-grid">
 
@@ -898,32 +917,6 @@
 </section>
 
 
-<!-- FOTO zwischen Flitterwochen und Fotos hochladen -->
-<div class="photo-break tall">
-  <img src="DSC00381-2.jpg" alt="Valeria und Denis" style="object-position: 40% center;">
-</div>
-
-
-<!-- FOTOS HOCHLADEN -->
-<section id="fotos" class="section section-dark">
-  <div class="container">
-    <p class="section-eyebrow" data-i18n="fotos_eyebrow">Mitmachen</p>
-    <h2 class="section-title" data-i18n="fotos_title">Eure Fotos &amp; Videos</h2>
-    <p class="section-sub" data-i18n="fotos_sub">Haltet eure Lieblingsmomente fest und teilt sie mit uns.</p>
-
-    <div class="upload-layout qr-print-area">
-      <div class="upload-text">
-        <h3 class="upload-title" data-i18n="fotos_upload_title">Fotos hochladen</h3>
-        <p class="upload-desc" data-i18n="fotos_upload_desc">
-          Klickt auf den Link, um Fotos und Videos direkt in unsere gemeinsame Cloud hochzuladen.
-        </p>
-        <a href="#" id="upload-link" class="btn-ghost" target="_blank" rel="noopener" data-i18n="fotos_btn">
-          Zur Foto-Cloud
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 <!-- INTERAKTIVE CHECKLISTE -->
@@ -1016,7 +1009,7 @@
       hero_eyebrow:'Wir heiraten', hero_date:'26 · Juni · 2027', hero_location:'Alicante, Spanien',
       cd_days:'Tage', cd_hours:'Stunden', cd_min:'Minuten', cd_sec:'Sekunden',
       hero_cta:'Jetzt anmelden', hero_scroll:'Entdecken',
-      tag_eyebrow:'26. Juni 2027', tag_title:'Wenn Liebe Ja sagt',
+      tag_eyebrow:'26. Juni 2027', tag_title:'Heute. Morgen. Für immer.',
       basilica_eyebrow:'Trauung · 18:30 Uhr',
       basilica_address:'Plaza de Santa María, s/n<br>03001 Alicante, Spanien',
       maps_open:'In Google Maps öffnen', flip_more:'Mehr', flip_back:'← Zurück',
@@ -1075,7 +1068,7 @@
       hero_eyebrow:'Nos casamos', hero_date:'26 · Junio · 2027', hero_location:'Alicante, España',
       cd_days:'Días', cd_hours:'Horas', cd_min:'Minutos', cd_sec:'Segundos',
       hero_cta:'Confirmar asistencia', hero_scroll:'Descubrir',
-      tag_eyebrow:'26 de junio de 2027', tag_title:'Cuando el Amor dice Sí',
+      tag_eyebrow:'26 de junio de 2027', tag_title:'Hoy. Mañana. Para siempre.',
       basilica_eyebrow:'Ceremonia · 18:30 h',
       basilica_address:'Plaza de Santa María, s/n<br>03001 Alicante, España',
       maps_open:'Abrir en Google Maps', flip_more:'Más', flip_back:'← Volver',
@@ -1189,6 +1182,43 @@
   }
   setInterval(updateCountdown, 1000);
   updateCountdown();
+
+  /* Hintergrundmusik */
+  const music = document.getElementById('bg-music');
+  const musicBtn = document.getElementById('music-btn');
+  let musicStarted = false;
+
+  music.volume = 0.35;
+
+  function tryAutoplay() {
+    music.play().then(() => {
+      musicBtn.classList.add('playing');
+      musicStarted = true;
+    }).catch(() => {
+      // Autoplay blockiert – Button zeigt Play-Icon
+    });
+  }
+
+  function toggleMusic() {
+    if (music.paused) {
+      music.play();
+      musicBtn.classList.add('playing');
+    } else {
+      music.pause();
+      musicBtn.classList.remove('playing');
+    }
+  }
+
+  // Autoplay nach erster Nutzerinteraktion
+  document.addEventListener('click', function startOnInteraction() {
+    if (!musicStarted) {
+      tryAutoplay();
+    }
+    document.removeEventListener('click', startOnInteraction);
+  }, { once: true });
+
+  // Sofort versuchen (klappt oft auf Desktop)
+  window.addEventListener('load', tryAutoplay);
 
   /* Nav Overlay */
   function toggleMenu() {
