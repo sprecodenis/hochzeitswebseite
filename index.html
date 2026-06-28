@@ -873,9 +873,9 @@
         Apéro und Feier finden im Hotel Meliá Alicante statt, das direkt am Meer liegt.
         Wer möchte, kann direkt im Meliá oder einem Partnerhotel übernachten.
       </p>
-      <a href="https://events.melia.com/es/events/melia-alicante/ENLACE-VALERIA-Y-DENIS-260627"
+      <a id="hotel1-btn-link" href="https://www.melia.com/de"
          class="btn-link" target="_blank" rel="noopener" data-i18n="hotel1_btn">
-        Im Meliá oder Partnerhotel buchen
+        Im Meliá buchen
       </a>
     </div>
 
@@ -1042,8 +1042,8 @@
       vegi_label:'Vegetarisch', allergien_label:'Allergien / Unverträglichkeiten', allergien_ph:'z.B. Nüsse, Gluten, Laktose ... (leer lassen falls keine)',
       hotel_eyebrow:'Unterkunft', hotel_title:'Hotel &amp; Anreise',
       hotel1_eyebrow:'Feierlichkeit',
-      hotel1_text:'Apéro und Feier finden im Hotel Meliá Alicante statt, das direkt am Meer liegt. Wer möchte, kann direkt im Meliá oder einem Partnerhotel übernachten.',
-      hotel1_btn:'Im Meliá oder Partnerhotel buchen', hotel2_eyebrow:'Hinweis',
+      hotel1_text:'Apéro und Feier finden im Hotel Meliá Alicante statt, das direkt am Meer liegt. Wer möchte, kann direkt im Meliá übernachten.',
+      hotel1_btn:'Im Meliá buchen', hotel2_eyebrow:'Hinweis',
       hotel2_text:'Im Juni findet in Alicante das berühmte Fest der Hogueras de San Juan statt. Es zieht tausende Besucher an und die Hotelverfügbarkeit ist sehr eingeschränkt.<br><br><strong>Es gibt viele weitere günstigere Hotels in unmittelbarer Nähe.</strong> Wir empfehlen, so früh wie möglich zu buchen.',
       wish_eyebrow:'Hochzeitsgeschenk', wish_title:'Flitterwochen',
       wish_intro:'Dass ihr mit uns feiert, ist für uns das grösste und schönste Geschenk.',
@@ -1101,8 +1101,8 @@
       vegi_label:'Vegetariano/a', allergien_label:'Alergias / intolerancias', allergien_ph:'p. ej. frutos secos, gluten, lactosa... (dejar vacío si no hay)',
       hotel_eyebrow:'Alojamiento', hotel_title:'Hotel y llegada',
       hotel1_eyebrow:'Celebración',
-      hotel1_text:'El aperitivo y la celebración tendrán lugar en el Hotel Meliá Alicante, situado directamente frente al mar. Quien lo desee puede alojarse en el propio Meliá o en un hotel colaborador.',
-      hotel1_btn:'Reservar en el Meliá o hotel colaborador', hotel2_eyebrow:'Aviso',
+      hotel1_text:'El aperitivo y la celebración tendrán lugar en el Hotel Meliá Alicante, situado directamente frente al mar. Quien lo desee puede alojarse en el propio Meliá.',
+      hotel1_btn:'Reservar en el Meliá', hotel2_eyebrow:'Aviso',
       hotel2_text:'En junio se celebra además la famosa Fiesta de las Hogueras de San Juan. Atrae a miles de visitantes y la disponibilidad hotelera es muy limitada.<br><br><strong>Hay muchos otros hoteles más económicos en los alrededores.</strong> Os recomendamos reservar lo antes posible.',
       wish_eyebrow:'Regalo de boda', wish_title:'Luna de Miel',
       wish_intro:'Que celebréis con nosotros es el regalo más grande y bonito que podemos recibir.',
@@ -1144,6 +1144,8 @@
     const nolEs = document.getElementById('nol-es');
     if (nolDe) nolDe.classList.toggle('nol-active', lang === 'de');
     if (nolEs) nolEs.classList.toggle('nol-active', lang === 'es');
+    const hotelBtn = document.getElementById('hotel1-btn-link');
+    if (hotelBtn) hotelBtn.href = lang === 'es' ? 'https://www.melia.com/es' : 'https://www.melia.com/de';
     renderPersons(true);
   }
 
